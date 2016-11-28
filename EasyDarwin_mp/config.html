@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	@@include("./common.html")
+</head>
+@@include("./header.html")
+<script>
+	$(".breadcrumb").append("<li class='active'><i class='fa fa-cogs'></i> 本地配置</li>");
+</script>
+<div class="container-fluid no-padding">
+	<div class="nav-tabs-custom col-lg-offset-2 col-lg-8 no-padding">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#web-config" data-toggle="tab">WEB 相关配置</a></li>
+			<li class=""><a href="#nvr-config" data-toggle="tab">EasyNVR 基础配置</a></li>
+			<li class=""><a href="#platform-config" data-toggle="tab">第三方平台接入</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="web-config">
+				<form role="form" class="form-horizontal" data-toggle="validator" data-disable="false">
+					<div class="form-group">
+						<label for="nginx-local-path" class="col-sm-4 control-label">NGINX 本地磁盘根目录</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="nginx-local-path" name="NginxLocalPath" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="nginx-web-path" class="col-sm-4 control-label">NGINX WEB 地址</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="nginx-web-path" name="NginxWebPath" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="nginx-rtmp-path" class="col-sm-4 control-label">NGINX RTMP 地址</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="nginx-rtmp-path" name="NginxRTMPPath" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-7">
+							<button type="submit" class="btn btn-primary">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="tab-pane" id="nvr-config">
+				<form role="form" class="form-horizontal" data-toggle="validator" data-disable="false">
+					<div class="form-group">
+						<label for="service-lan-port" class="col-sm-4 control-label">EasyNVR 本地端口</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="service-lan-port" name="ServiceLanPort" pattern="^[0-9]+$" readonly="readonly"
+								required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="service-lan-ip" class="col-sm-4 control-label">EasyNVR 本地地址</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="service-lan-ip" name="ServiceLanIP" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="service-wan-port" class="col-sm-4 control-label">EasyNVR 公网端口</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="service-wan-port" name="ServiceWanPort" pattern="^[0-9]+$" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="service-wan-ip" class="col-sm-4 control-label">EasyNVR 公网地址</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="service-wan-ip" name="ServiceWanIP" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="channel-snap-interval" class="col-sm-4 control-label">快照间隔时间(S)</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="channel-snap-interval" name="ChannelSnapInterval" pattern="^[0-9]+$" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-7">
+							<button type="submit" class="btn btn-primary">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="tab-pane" id="platform-config">
+				<form role="form" class="form-horizontal" data-toggle="validator" data-disable="false">
+					<div class="form-group">
+						<label for="platform-name" class="col-sm-4 control-label">接入平台</label>
+						<div class="col-sm-7">
+							<select name="ThridPlatform" id="platform-name" class="form-control">
+							<option value="" selected="selected">不启用</option>
+							<option value="EasyDarwin">EasyDarwin</option>
+						</select>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="platform-ip" class="col-sm-4 control-label">IP 地址</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="platform-ip" name="ThridPlatformIP" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="platform-port" class="col-sm-4 control-label">监听端口</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="platform-port" name="ThridPlatformPort" pattern="^[0-9]+$" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="platform-token" class="col-sm-4 control-label">Token</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="platform-token" name="ThridPlatformToken" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="platform-uid" class="col-sm-4 control-label">UID</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="platform-uid" name="ThridPlatformUID" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="platform-interval" class="col-sm-4 control-label">保活时间</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="platform-interval" name="ThridPlatformAliveInterval" pattern="^[0-9]+$" required>
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="platform-customize" class="col-sm-4 control-label">自定义配置</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="platform-customize" name="ThridPlatformCustomize">
+							<span class="help-block with-errors"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-7">
+							<button type="submit" class="btn btn-primary">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- /.tab-content -->
+	</div>
+</div>
+<script>
+	function reload(){
+		$.get(_url + "/getbaseconfig",function(data){
+			try{
+				var ret = JSON.parse(data);
+				$("#web-config form").form("load",ret.EasyDarwin.Body);
+				$("#nvr-config form").form("load",ret.EasyDarwin.Body);
+			}catch(e){}
+		});
+		$.get(_url + "/getthirdplatformconfig",function(data){
+			try{
+				var ret = JSON.parse(data);
+				$("#platform-config form").form("load",ret.EasyDarwin.Body);
+				$("[name=ThridPlatform]").trigger("change");
+			}catch(e){}
+		});
+	}
+	$(function(){
+		easyloader.load(['form'],function(){
+			reload();
+		});
+        $('#web-config form, #nvr-config form').validator().on('submit', function(e) {
+            if (!e.isDefaultPrevented()) {
+                e.preventDefault();
+				var interval = parseInt($("[name=ChannelSnapInterval]").val());
+				if(isNaN(interval) || interval < 30){
+					$.gritter.add("间隔时间要求 >= 30");
+					return;
+				}
+				var $this = $(this);
+				$this.find("button[type=submit]").prop("disabled",true);
+				$.ajax({
+					type : "GET",
+					url : _url + "/setbaseconfig",
+					data : $this.serialize(),
+					success : function(data){
+						reload();
+						$.gritter.add({
+							text : '配置成功,重启后生效!',
+							class_name : 'gritter-info'
+						});
+					},
+					complete : function(xhr, ts){
+						$this.find("button[type=submit]").prop("disabled",false);
+					}
+				})
+            }
+        });
+        $('#platform-config form').validator().on('submit', function(e) {
+            if (!e.isDefaultPrevented()) {
+                e.preventDefault();
+				var $this = $(this);
+				$this.find("button[type=submit]").prop("disabled",true);
+				$.ajax({
+					type : "GET",
+					url : _url + "/setthirdplatformconfig",
+					data : $this.serialize(),
+					success : function(data){
+						reload();
+						$.gritter.add({
+							text : '配置成功,重启后生效!',
+							class_name : 'gritter-info'
+						});
+					},
+					complete : function(xhr, ts){
+						$this.find("button[type=submit]").prop("disabled",false);
+					}
+				})
+            }
+        });		
+		$("[name=ThridPlatform]").change(function(){
+			var val = $(this).val();
+			if(!val){
+				//$('#platform-config form').find(".form-group").removeClass("has-error").removeClass("has-success");
+       	 		//$('#platform-config form').find(".with-errors").empty();
+				//$('#platform-config form')[0].reset();
+				$('#platform-config form :input').not(this).not(":submit").prop("disabled",true);
+			}else{
+				$('#platform-config form :input').not(this).not(":submit").prop("disabled",false);
+			}
+		});
+	})
+</script>
+@@include("./footer.html")

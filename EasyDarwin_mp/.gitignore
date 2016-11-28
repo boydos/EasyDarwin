@@ -1,0 +1,8 @@
+/node_modules/
+*.log
+*.m3u8
+*.ts
+dist/nginx/www/snap/*
+dist/nginx/www/logs/*
+dist/easynvr.xml
+dist/easynvr.db
