@@ -221,11 +221,13 @@ public:
 
 	bool GetAllowGuestDefault() { return fAllowGuestAuthorizeDefault; }
 
-	UInt16 GetHTTPServicePort() { return fHTTPServicePort; }
+	UInt16 GetServiceLanPort() { return fServiceLANPort; }
+	UInt16 GetServiceWanPort() { return fServiceWANPort; }
 
-	char* GetRTSPWANIP() { return this->GetStringPref(easyPrefsRTSPWANIPAddr); }
+	char* GetServiceWANIP() { return this->GetStringPref(easyPrefsServiceWANIPAddr); }
 	UInt16 GetRTSPWANPort() const {	return fRTSPWANPort; }
 
+	char* GetNginxRootFolder() { return this->GetStringPref(qtssPrefsNginxRootFolder); }
 	char* GetNginxWebPath() { return this->GetStringPref(easyPrefsNginxWebPath); }
 	char* GetNginxRTMPPath() { return this->GetStringPref(easyPrefsNginxRTMPPath); }
 
@@ -295,7 +297,8 @@ private:
 	UInt32  fNumThreads;
 	UInt32  fNumRTSPThreads;
 
-	UInt16	fHTTPServicePort;
+	UInt16	fServiceLANPort;
+	UInt16	fServiceWANPort;
 
 	bool  fEnableMonitorStatsFile;
 	UInt32  fStatsFileIntervalSeconds;

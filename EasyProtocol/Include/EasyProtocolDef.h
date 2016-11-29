@@ -22,7 +22,7 @@
 #define Easy_API
 #endif
 //#define Easy_API
-#define EASY_PROTOCOL_VERSION                         "1.0"
+#define EASY_PROTOCOL_VERSION							"1.0"
 #define EASY_PROTOCOL_STREAM_MAIN						"0"
 #define EASY_PROTOCOL_STREAM_SUB						"1"
 
@@ -58,6 +58,7 @@
 #define EASY_TAG_TERMINAL_TYPE							"TerminalType"
 #define EASY_TAG_APP_TYPE								"AppType"
 #define EASY_TAG_SESSION_ID								"SessionID"
+#define EASY_TAG_L_SESSION_ID							"sessionid"
 #define EASY_TAG_MESSAGE_TYPE							"MessageType"
 #define EASY_TAG_CSEQ									"CSeq"
 #define EASY_TAG_ERROR_NUM								"ErrorNum"
@@ -143,41 +144,68 @@
 #define EASY_TAG_SERVER_INTERFACE_VERSION				"InterfaceVersion"
 
 #define EASY_TAG_CONFIG_SERVICE_LAN_PORT				"ServiceLanPort"
-#define EASY_TAG_CONFIG_SERVICE_LAN_IP					"ServiceLanIP"
-#define EASY_TAG_CONFIG_SERIVCE_WAN_PORT				"ServiceWanPort"
-#define EASY_TAG_CONFIG_SERVICE_WAN_IP					"ServiceWanIP"
-#define EASY_TAG_CONFIG_CHANNEL_SNAP_INTERVAL			"ChannelSnapInterval"
+#define EASY_TAG_CONFIG_SERVICE_L_LAN_PORT				"servicelanport"
 
-#define EASY_TAG_CONFIG_NGINX_LOCAL_PATH				"NginxLocalPath"
+#define EASY_TAG_CONFIG_SERVICE_WAN_PORT				"ServiceWanPort"
+#define EASY_TAG_CONFIG_SERVICE_L_WAN_PORT				"servicewanport"
+
+#define EASY_TAG_CONFIG_SERVICE_LAN_IP					"ServiceLanIP"
+#define EASY_TAG_CONFIG_SERVICE_L_LAN_IP				"servicelanip"
+
+#define EASY_TAG_CONFIG_SERVICE_WAN_IP					"ServiceWanIP"
+#define EASY_TAG_CONFIG_SERVICE_L_WAN_IP				"servicewanip"
+
+#define EASY_TAG_CONFIG_RTSP_LAN_PORT					"RTSPLanPort"
+#define	EASY_TAG_CONFIG_RTSP_WAN_PORT					"RTSPWanPort"
+
+#define EASY_TAG_CONFIG_CHANNEL_SNAP_INTERVAL			"ChannelSnapInterval"
+#define EASY_TAG_CONFIG_CHANNEL_L_SNAP_INTERVAL			"channelsnapinterval"
+
+#define EASY_TAG_CONFIG_NGINX_ROOT_FOLDER				"NginxRootFolder"
+#define EASY_TAG_CONFIG_NGINX_L_ROOT_FOLDER				"nginxrootfolder"
+
 #define EASY_TAG_CONFIG_NGINX_WEB_PATH					"NginxWebPath"
+#define EASY_TAG_CONFIG_NGINX_L_WEB_PATH				"nginxwebpath"
 #define EASY_TAG_CONFIG_NGINX_RTMP_PATH					"NginxRTMPPath"
+#define EASY_TAG_CONFIG_NGINX_L_RTMP_PATH				"nginxrtmppath"
 
 #define EASY_TAG_THRID_PART_PLATFORM_NAME				"ThridPlatform"
+#define EASY_TAG_L_THRID_PART_PLATFORM_NAME				"thridplatform"
 #define	EASY_TAG_THRID_PART_PLATFORM_IP					"ThridPlatformIP"
+#define	EASY_TAG_L_THRID_PART_PLATFORM_IP				"thridplatformip"
 #define	EASY_TAG_THRID_PART_PLATFORM_PORT				"ThridPlatformPort"
+#define	EASY_TAG_L_THRID_PART_PLATFORM_PORT				"thridplatformport"
 #define	EASY_TAG_THRID_PART_PLATFORM_UID				"ThridPlatformUID"
+#define	EASY_TAG_L_THRID_PART_PLATFORM_UID				"thridplatformuid"
 #define EASY_TAG_THRID_PART_PLATFORM_TOKEN				"ThridPlatformToken"
+#define EASY_TAG_L_THRID_PART_PLATFORM_TOKEN			"thridplatformtoken"
 #define	EASY_TAG_THRID_PART_PLATFORM_CUSTOMIZE			"ThridPlatformCustomize"
+#define	EASY_TAG_L_THRID_PART_PLATFORM_CUSTOMIZE		"thridplatformcustomize"
 #define	EASY_TAG_THRID_PART_PLATFORM_ALIVE_INTERVAL		"ThridPlatformAliveInterval"
+#define	EASY_TAG_L_THRID_PART_PLATFORM_ALIVE_INTERVAL	"thridplatformaliveinterval"
 
 #define EASY_TAG_ID										"Id"
 #define EASY_TAG_ENABLE									"Enable"
 #define EASY_TAG_L_ENABLE								"enable"
 #define EASY_TAG_ONLINE									"Online"
-#define EASY_TAG_RTSP									"Rtsp"
+#define EASY_TAG_RTSP									"RTSP"
 #define EASY_TAG_L_RTSP									"rtsp"
 #define EASY_TAG_ONVIF									"Onvif"
 #define EASY_TAG_L_ONVIF								"onvif"
-#define EASY_TAG_CDN									"Cdn"
+#define EASY_TAG_CDN									"CDN"
 #define EASY_TAG_L_CDN									"cdn"
 
 #define EASY_TAG_L_OLD_PASSWORD							"oldpassword"
 #define EASY_TAG_L_NEW_PASSWORD							"newpassword"
 
 #define EASY_TAG_DATE									"Date"
+#define EASY_TAG_L_DATE									"date"
 #define EASY_TAG_DATE_TIME								"DateTime"
+#define EASY_TAG_L_DATE_TIME							"datetime"
 #define EASY_TAG_START_TIME								"StartTime"
+#define EASY_TAG_L_START_TIME							"starttime"
 #define EASY_TAG_END_TIME								"EndTime"
+#define EASY_TAG_L_END_TIME								"endtime"
 
 #define EASY_TAG_PATH									"Path"
 #define EASY_TAG_L_PATH									"path"
@@ -326,7 +354,7 @@
 enum EasyDarwinTimeFormat
 {
 	EASY_TIME_FORMAT_YYYYMMDDHHMMSS = 1,    ///< Format like 2014-08-31 08:15:30
-	EASY_TIME_FORMAT_YYYYMMDDHHMMSSEx,		///<Format like 20140831081530
+	EASY_TIME_FORMAT_YYYYMMDDHHMMSSEx,		///< Format like 20140831081530
 	EASY_TIME_FORMAT_YYYYMMDD,              ///< Format like 2014-08-31
 	EASY_TIME_FORMAT_HHMMSS                 ///< Format like 08:15:30    
 };

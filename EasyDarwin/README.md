@@ -9,15 +9,112 @@ EasyDarwin本身提供了一个高性能的服务端框架，Linux/Windows跨平
 EasyDarwin开源流媒体服务器：编译、配置、部署：[http://edu.csdn.net/course/detail/2431](http://edu.csdn.net/course/detail/2431 "EasyDarwin开源流媒体服务器视频教程")
 
 ## EasyDarwin目前支持 ##
-1. MP4点播(QTSSFileModule)；
+1. MP4点播(nginx)；
 2. 标准RTSP推模式直播(QTSSReflectorModule)；
 3. 标准RTSP拉模式直播(EasyRelayModule)；
 4. HLS直播(EasyHLSModule)；
 5. 接入EasyDarwin流媒体平台，分布式部署(EasyCMSModule)；
 
 ## EasyDarwin正在进行开发的 ##
-1. Onvif支持；
-2. 分布式部署负载均衡（结合EasyCMS）；
+1. 点播；
+2. WEB管理后台；
+3. RTMP/HLS直播功能；
+
+## 接口列表 ##
+
+#### 1.获取服务器信息 ####
+
+- 功能说明
+> 获取服务器当前的软/硬件版本信息，接口版本信息以及累计运行时长等信息；
+
+- URL
+> http://[域名]:10008/api/v1/getserverinfo
+
+- 格式
+> json
+
+- HTTP请求方式
+> GET,POST
+
+- 参数说明
+> 公共参数：无
+
+
+> 私有参数：无
+
+- 请求示例
+> http://121.40.50.44:10008/api/v1/getserverinfo
+
+- 返回参数说明
+> "Hardware" : 服务器所在的硬件平台；
+> 
+> "InterfaceVersion" : api接口版本；
+> 
+> "RunningTime" : 服务累计运行时间；
+> 
+> "Server" : 服务器版本信息
+
+- 正确返回示例
+
+    {
+       "EasyDarwin" : {
+      "Body" : {
+     "Hardware" : "x86",
+     "InterfaceVersion" : "v1",
+     "RunningTime" : "2 Days 2 Hours 38 Mins 52 Secs",
+     "Server" : "Server: EasyDarwin/7.1 (Build/16.1111; Platform/Win32; Release/EasyDarwin; State/Development; )"
+      },
+      "Header" : {
+     "CSeq" : "1",
+     "ErrorNum" : "200",
+     "ErrorString" : "Success OK",
+     "MessageType" : "MSG_SC_SERVER_INFO_ACK",
+     "Version" : "1.0"
+      }
+       }
+    }
+
+- 错误返回示例
+> 无
+    
+
+#### 2.登录服务器 ####
+
+接口：http://121.40.50.44:10008/api/v1/login?username=aaa&password=bbb
+
+说明：username表示用户名，password表示密码
+
+返回：200 OK表示成功，其他表示失败
+
+
+#### 3.登出服务器 ####
+
+接口：http://121.40.50.44:10008/api/v1/logout
+
+返回：200 OK
+
+#### 4.获取服务器基本配置信息 ####
+
+接口：http://121.40.50.44:10008/api/v1/getbaseconfig
+
+返回：
+
+         "ServiceLanPort" : EasyDarwin HTTP本地监听端口
+         "ServiceWanPort" : EasyDarwin HTTP公网端口
+         "RTSPLanPort" : EasyDarwin RTSP本地监听端口
+         "RTSPWanPort" : EasyDarwin RTSP公网端口
+         "ServiceLanIP" : EasyDarwin本地地址
+         "ServiceWanIP" : EasyDarwin公网地址
+
+         "NginxRootFolder" : NGINX 本地磁盘根目录
+         "NginxWebPath" : NGINX WEB 地址
+         "NginxRTMPPath" :NGINX RTMP 地址
+
+
+#### 5.设置服务器基本配置信息 ####
+
+接口：http://121.40.50.44:10008/api/v1/setbaseconfig?ServiceLanPort=10008&ServiceWanPort=0&RTSPLanPort=10554&ServiceLanIP=192.168.66.189
+
 
 ## 编译、配置、部署的方法 ##
 
